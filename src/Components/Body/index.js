@@ -1,5 +1,7 @@
 import { Row, Col } from "antd";
 import React from "react";
+import Stories from "../Body/stories/index";
+import AddPost from "../Body/AddPost/index";
 
 function index() {
   const styles = {
@@ -8,13 +10,16 @@ function index() {
     },
   };
   return (
-    <div style={{ padding: "10px" }}>
+    <div style={{ paddingTop: "20px" }}>
       <Row>
-        <Col xs={24} sm={24} md={18} lg={16} xl={16} style={styles.border}>
-          col-12
+        <Col xs={0} sm={0} md={0} lg={2} xl={4}></Col>
+        <Col xs={24} sm={24} md={16} lg={15} xl={13} style={styles.border}>
+          <Stories />
+          <AddPost />
         </Col>
-        <Col xs={0} sm={0} md={6} lg={8} xl={8} style={styles.border}>
-          col-12
+        <Col xs={0} sm={0} md={1} lg={1} xl={1}></Col>
+        <Col xs={0} sm={0} md={7} lg={6} xl={6} style={styles.border}>
+          contacts
         </Col>
       </Row>
     </div>
