@@ -1,7 +1,7 @@
-import { Avatar, Image } from "antd";
+import { Avatar, Image, Row, Col } from "antd";
 import React, { useState } from "react";
 import { VideoCameraFilled, SmileTwoTone } from "@ant-design/icons";
-import "./index.css"
+import "./index.css";
 
 function AddPost() {
   const [input, setInput] = useState("");
@@ -39,19 +39,19 @@ function AddPost() {
             className="addPost__input"
             placeholder={`What's on your mind, ${user.displayName}?`}
           />
-          <input
+          {/* <input
             value={inputURL}
             onChange={(e) => setInputURL(e.target.value)}
             type="text"
             placeholder="Image URL (Optional)"
-          />
+          /> */}
           <button onClick={handleSubmit} type="submit">
             Hidden Button
           </button>
         </form>
       </div>
-      <div className="addPost__bottom">
-        <div className="addPost__option">
+      <div>
+        {/* <div className="addPost__option">
           <VideoCameraFilled style={{ color: "red" }} />
           <h3>Live Video</h3>
         </div>
@@ -66,7 +66,31 @@ function AddPost() {
           <SmileTwoTone twoToneColor="orange" />
 
           <h3>Feeling/Activity</h3>
-        </div>
+        </div> */}
+        <Row className="addPost__bottom">
+          <Col xs={12} sm={8} md={8} lg={8} xl={8}>
+            <div className="addPost__option">
+              <VideoCameraFilled style={{ color: "red" }} />
+              <h3>Live Video</h3>
+            </div>
+          </Col>
+          <Col xs={12} sm={8} md={8} lg={8} xl={8}>
+            <div className="addPost__option">
+              <img
+                src="https://img.icons8.com/fluency/28/000000/image-gallery.png"
+                alt=""
+              />
+              <h3>Photo/Video</h3>
+            </div>
+          </Col>
+          <Col xs={0} sm={8} md={8} lg={8} xl={8}>
+            <div className="addPost__option">
+              <SmileTwoTone twoToneColor="orange" />
+
+              <h3>Feeling/Activity</h3>
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );
