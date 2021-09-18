@@ -16,8 +16,10 @@
 }
 
 .addPost__top > form {
-  flex: 1;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 5px;
 }
 
 .addPost__top > form > input {
@@ -27,7 +29,8 @@
   margin: 0 10px;
   border-radius: 999px;
   background-color: #3a3b3c;
-  color: whitesmoke;
+  color: white;
+  cursor: pointer;
 }
 
 .addPost__top > form > button {
@@ -60,5 +63,10 @@
 
 .addPost__option:hover {
   background-color: #3a3b3c;
+  border-radius: 20px;
+}
+
+.addPost__top > form > input:hover {
+  background-color: #5E5E5F;
   border-radius: 20px;
 }

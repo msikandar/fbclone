@@ -11,7 +11,6 @@ function index() {
       border: "",
     },
   };
-  var unix = Math.round(+new Date() / 1000);
   return (
     <div style={{ paddingTop: "20px" }}>
       <Row>
@@ -22,7 +21,7 @@ function index() {
           <Post
             profilePic="https://images.unsplash.com/photo-1569173112611-52a7cd38bea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
             message="Hello"
-            timestamp={unix}
+            timestamp={new Date().getTime()}
             username="sikandar"
             image="https://images.unsplash.com/photo-1535468665140-8af0686eb464?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
           />
