@@ -5,16 +5,16 @@ import "./index.css";
 function Contacts() {
   const data = [
     {
-      title: "Ant Design Title 1",
+      title: "Asif Ahmed",
     },
     {
-      title: "Ant Design Title 2",
+      title: "Zahid Ali",
     },
     {
-      title: "Ant Design Title 3",
+      title: "Brook James",
     },
     {
-      title: "Ant Design Title 4",
+      title: "Haarish",
     },
   ];
   return (
