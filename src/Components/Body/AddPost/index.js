@@ -1,11 +1,10 @@
 import { Avatar, Image, Row, Col } from "antd";
 import React, { useState } from "react";
-import { VideoCameraFilled, SmileTwoTone } from "@ant-design/icons";
+import { VideoCameraFilled, SmileFilled } from "@ant-design/icons";
 import "./index.css";
 
 function AddPost() {
   const [input, setInput] = useState("");
-  const [inputURL, setInputURL] = useState("");
   const user = {
     displayName: "sikandar",
   };
@@ -21,7 +20,6 @@ function AddPost() {
     // })
 
     setInput("");
-    setInputURL("");
   };
   return (
     <div className="addPost">
@@ -39,38 +37,18 @@ function AddPost() {
             className="addPost__input"
             placeholder={`What's on your mind, ${user.displayName}?`}
           />
-          {/* <input
-            value={inputURL}
-            onChange={(e) => setInputURL(e.target.value)}
-            type="text"
-            placeholder="Image URL (Optional)"
-          /> */}
           <button onClick={handleSubmit} type="submit">
             Hidden Button
           </button>
         </form>
       </div>
       <div>
-        {/* <div className="addPost__option">
-          <VideoCameraFilled style={{ color: "red" }} />
-          <h3>Live Video</h3>
-        </div>
-        <div className="addPost__option">
-          <img
-            src="https://img.icons8.com/fluency/28/000000/image-gallery.png"
-            alt=""
-          />
-          <h3>Photo/Video</h3>
-        </div>
-        <div className="addPost__option">
-          <SmileTwoTone twoToneColor="orange" />
-
-          <h3>Feeling/Activity</h3>
-        </div> */}
         <Row className="addPost__bottom">
           <Col xs={12} sm={8} md={8} lg={8} xl={8}>
             <div className="addPost__option">
-              <VideoCameraFilled style={{ color: "red" }} />
+              <VideoCameraFilled
+                style={{ color: "red", fontSize: "20px", paddingBottom: "5px" }}
+              />
               <h3>Live Video</h3>
             </div>
           </Col>
@@ -85,7 +63,13 @@ function AddPost() {
           </Col>
           <Col xs={0} sm={8} md={8} lg={8} xl={8}>
             <div className="addPost__option">
-              <SmileTwoTone twoToneColor="orange" />
+              <SmileFilled
+                style={{
+                  color: "orange",
+                  fontSize: "20px",
+                  paddingBottom: "5px",
+                }}
+              />
 
               <h3>Feeling/Activity</h3>
             </div>
