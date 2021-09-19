@@ -12,7 +12,7 @@ function index() {
     },
   };
   return (
-    <div style={{ paddingTop: "20px" }}>
+    <div style={{ paddingTop: "10px" }}>
       <Row>
         <Col xs={0} sm={0} md={0} lg={2} xl={4}></Col>
         <Col xs={24} sm={24} md={16} lg={14} xl={12} style={styles.border}>
