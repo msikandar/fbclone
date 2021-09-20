@@ -2,13 +2,19 @@ import { Avatar, Image, Row, Col } from "antd";
 import React, { useState } from "react";
 import { VideoCameraFilled, SmileFilled } from "@ant-design/icons";
 import "./index.css";
+import { useDispatch } from "react-redux";
+import { addPost } from "../../../redux/actions/appActions";
 
 function AddPost() {
   const [input, setInput] = useState("");
   const [inputURL, setInputURL] = useState("");
+
   const user = {
     displayName: "sikandar",
   };
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -19,6 +25,21 @@ function AddPost() {
     //   username: user.displayName,
     //   image: inputURL
     // })
+    if (input.length > 0) {
+      dispatch(
+        addPost({
+          message: input,
+          timestamp: new Date().getTime(),
+          profilePic: "https://i.pravatar.cc/300",
+          username: "User",
+          image:
+            inputURL !== ""
+              ? inputURL
+              : "https://images.unsplash.com/photo-1549813069-f95e44d7f498?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
+        })
+      );
+    }
+    console.log(input, inputURL);
 
     setInput("");
     setInputURL("");
@@ -31,7 +52,7 @@ function AddPost() {
             <Image src="https://images.unsplash.com/photo-1569173112611-52a7cd38bea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" />
           }
         />
-        <form >
+        <form>
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}

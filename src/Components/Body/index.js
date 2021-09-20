@@ -4,13 +4,16 @@ import Stories from "../Body/stories/index";
 import AddPost from "../Body/AddPost/index";
 import Post from "./Post";
 import Contacts from "./Contacts";
+import { useSelector } from "react-redux";
 
-function index() {
+function Index() {
   const styles = {
     border: {
       border: "",
     },
   };
+  const posts = useSelector((state) => state.postData);
+  console.log(posts, "i am the post data");
   return (
     <div style={{ paddingTop: "10px" }}>
       <Row>
@@ -18,21 +21,26 @@ function index() {
         <Col xs={24} sm={24} md={16} lg={14} xl={12} style={styles.border}>
           <Stories />
           <AddPost />
-          <Post
-            profilePic="https://images.unsplash.com/photo-1569173112611-52a7cd38bea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
-            message="Hello"
-            timestamp={new Date().getTime()}
-            username="sikandar"
-            image="https://images.unsplash.com/photo-1535468665140-8af0686eb464?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-          />
+          {posts.map((post, index) => {
+            return (
+              <Post
+                key={index}
+                profilePic={post.profilePic}
+                message={post.message}
+                timestamp={post.timestamp}
+                username={post.username}
+                image={post.image}
+              />
+            );
+          })}
         </Col>
         <Col xs={0} sm={0} md={1} lg={1} xl={1}></Col>
         <Col xs={0} sm={0} md={7} lg={7} xl={7} style={styles.border}>
-          <Contacts/>
+          <Contacts />
         </Col>
       </Row>
     </div>
   );
 }
 
-export default index;
+export default Index;

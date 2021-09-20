@@ -21,6 +21,7 @@
   .post__topInfo > h3 {
     font-size: medium;
     color: whitesmoke;
+    margin-bottom: 0px;
   }
   
   .post__bottom {
@@ -32,7 +33,6 @@
   }
   
   .post__options {
-    border-top: 1px solid lightgray;
     display: flex;
     justify-content: space-evenly;
     font-size: medium;
