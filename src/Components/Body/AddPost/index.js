@@ -49,7 +49,7 @@ function AddPost() {
       <div className="addPost__top">
         <Avatar
           src={
-            <Image src="https://images.unsplash.com/photo-1569173112611-52a7cd38bea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" />
+            <Image src="https://images.unsplash.com/photo-1631791563807-d41830aa0af4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=392&q=80" />
           }
         />
         <form style={{ width: "100%" }}>

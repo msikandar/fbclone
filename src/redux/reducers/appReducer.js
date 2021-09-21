@@ -38,7 +38,7 @@ const initialStoryState = {
 const initialPostState = [
   {
     profilePic:
-      "https://images.unsplash.com/photo-1569173112611-52a7cd38bea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+      "https://images.unsplash.com/photo-1631791563807-d41830aa0af4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=392&q=80",
     message:
       "I'm fascinated by beautiful scenery and what we have here on this Earth.",
     timestamp: 1632025079351,
