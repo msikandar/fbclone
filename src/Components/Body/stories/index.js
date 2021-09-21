@@ -74,7 +74,6 @@ function Index() {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}
-        style={{ color: "3a3b3c" }}
       >
         <Input
           placeholder="Image Url"

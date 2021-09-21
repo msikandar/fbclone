@@ -28,7 +28,7 @@ const initialStoryState = {
     },
     {
       image:
-        "https://images.unsplash.com/photo-1628191010210-a59de33e5941?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+        "https://images.unsplash.com/photo-1604842591806-1f45c2f7e858?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8NnNNVmpUTFNrZVF8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
       profileImage: "https://i.pravatar.cc/305",
       title: "Tahir",
     },
@@ -39,9 +39,10 @@ const initialPostState = [
   {
     profilePic:
       "https://images.unsplash.com/photo-1569173112611-52a7cd38bea9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
-    message: "Beautiful",
+    message:
+      "I'm fascinated by beautiful scenery and what we have here on this Earth.",
     timestamp: 1632025079351,
-    username: "sikandar",
+    username: "Sikandar",
     image:
       "https://images.unsplash.com/photo-1631903129315-ac063e708d35?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
   },
@@ -50,10 +51,9 @@ const initialPostState = [
 export const storyReducer = (state = initialStoryState, { type, payload }) => {
   switch (type) {
     case ActionTypes.ADD_STORY: {
-      let tempstories = [...initialStoryState.stories];
-      tempstories.unshift(payload); //append payload to start of stories array
-      const updatedstories = [...tempstories];
-      return { ...state, stories: updatedstories }; //copy updated stories to the state
+      state.stories.unshift(payload); //append payload to start of stories array
+
+      return { ...state }; //copy updated stories to the state
     }
 
     default:
@@ -64,8 +64,8 @@ export const storyReducer = (state = initialStoryState, { type, payload }) => {
 export const postReducer = (state = initialPostState, { type, payload }) => {
   switch (type) {
     case ActionTypes.ADD_POST: {
-      initialPostState.push(payload);
-      return [...initialPostState];
+      state.unshift(payload);
+      return [...state];
     }
     default:
       return state;
