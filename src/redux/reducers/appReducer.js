@@ -1,4 +1,5 @@
 import { ActionTypes } from "../constants/action-types";
+import { randomBytes } from "crypto";
 
 const initialStoryState = {
   stories: [
@@ -37,6 +38,9 @@ const initialStoryState = {
 
 const initialPostState = [
   {
+    id: randomBytes(4).toString("hex"),
+    comments: ["heoo", "hello"],
+    like: true,
     profilePic:
       "https://images.unsplash.com/photo-1631791563807-d41830aa0af4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=392&q=80",
     message:
@@ -66,6 +70,28 @@ export const postReducer = (state = initialPostState, { type, payload }) => {
     case ActionTypes.ADD_POST: {
       state.unshift(payload);
       return [...state];
+    }
+    case ActionTypes.ADD_COMMENT: {
+      console.log(payload);
+      let temp = [...state];
+      temp.map((list) => {
+        if (list.id === payload.id) {
+          list.comments.unshift(payload.comment);
+        }
+        return list;
+      });
+      return temp;
+    }
+    case ActionTypes.ADD_LIKE: {
+      console.log(payload);
+      let temp = [...state];
+      temp.map((list) => {
+        if (list.id === payload.id) {
+          list.like = !list.like;
+        }
+        return list;
+      });
+      return temp;
     }
     default:
       return state;

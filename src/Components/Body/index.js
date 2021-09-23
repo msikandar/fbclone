@@ -25,11 +25,14 @@ function Index() {
             return (
               <Post
                 key={index}
+                id={post.id}
                 profilePic={post.profilePic}
                 message={post.message}
                 timestamp={post.timestamp}
                 username={post.username}
                 image={post.image}
+                comments={post.comments}
+                like={post.like}
               />
             );
           })}

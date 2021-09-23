@@ -4,6 +4,7 @@ import { VideoCameraFilled, SmileFilled } from "@ant-design/icons";
 import "./index.css";
 import { useDispatch } from "react-redux";
 import { addPost } from "../../../redux/actions/appActions";
+const { randomBytes } = require("crypto");
 
 function AddPost() {
   const [input, setInput] = useState("");
@@ -28,6 +29,9 @@ function AddPost() {
     if (input.length > 0) {
       dispatch(
         addPost({
+          id: randomBytes(4).toString("hex"),
+          comments: [],
+          like: false,
           message: input,
           timestamp: new Date().getTime(),
           profilePic: "https://i.pravatar.cc/300",

@@ -14,9 +14,16 @@ export const addPost = (post) => {
   };
 };
 
-export const add = () => {
+export const addComment = (comment, id) => {
   return {
-    type: ActionTypes.add,
-    payload: {},
+    type: ActionTypes.ADD_COMMENT,
+    payload: { comment: comment, id: id },
+  };
+};
+
+export const addLike = (like, id) => {
+  return {
+    type: ActionTypes.ADD_LIKE,
+    payload: { like, id },
   };
 };

@@ -53,9 +53,13 @@
   .post__option > p {
     margin-left: 10px;
     margin-top: 12px;
+    margin-bottom: 11px;
   }
   
   .post__option:hover {
     background-color: #3A3B3C;
     border-radius: 10px;
+  }
+  .like {
+    color: #1777F2;
   }

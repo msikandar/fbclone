@@ -1,5 +1,6 @@
 export const ActionTypes = {
   ADD_POST: "ADD_POST",
   ADD_STORY: "ADD_STORY",
-  add: "add",
+  ADD_COMMENT: "ADD_COMMENT",
+  ADD_LIKE: "ADD_LIKE",
 };
