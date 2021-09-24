@@ -1,7 +1,23 @@
 import { ActionTypes } from "../constants/action-types";
 import { randomBytes } from "crypto";
 
-const initialStoryState = {
+const initialPostState = JSON.parse(store("posts")) || [
+  {
+    id: randomBytes(4).toString("hex"),
+    comments: ["heoo", "hello"],
+    like: true,
+    profilePic:
+      "https://images.unsplash.com/photo-1631791563807-d41830aa0af4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=392&q=80",
+    message:
+      "I'm fascinated by beautiful scenery and what we have here on this Earth.",
+    timestamp: 1632025079351,
+    username: "Sikandar",
+    image:
+      "https://images.unsplash.com/photo-1631903129315-ac063e708d35?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
+  },
+];
+
+const initialStoryState = JSON.parse(store("stories")) || {
   stories: [
     {
       image:
@@ -36,27 +52,39 @@ const initialStoryState = {
   ],
 };
 
-const initialPostState = [
-  {
-    id: randomBytes(4).toString("hex"),
-    comments: ["heoo", "hello"],
-    like: true,
-    profilePic:
-      "https://images.unsplash.com/photo-1631791563807-d41830aa0af4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=392&q=80",
-    message:
-      "I'm fascinated by beautiful scenery and what we have here on this Earth.",
-    timestamp: 1632025079351,
-    username: "Sikandar",
-    image:
-      "https://images.unsplash.com/photo-1631903129315-ac063e708d35?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-  },
-];
+if (isNull(store("posts"))) {
+  store("posts", JSON.stringify(initialPostState));
+}
+if (isNull(store("stories"))) {
+  store("stories", JSON.stringify(initialStoryState));
+}
+function isNull(val) {
+  //helper function
+  if (val === "undefined" || val === null || val === undefined || val === "") {
+    return true;
+  } else {
+    return false;
+  }
+}
 
+function store(key, value) {
+  if (typeof Storage !== "undefined" && typeof value !== "undefined") {
+    localStorage.setItem(key, value);
+  }
+
+  if (value === undefined) {
+    var data;
+    if (typeof Storage !== "undefined") {
+      data = localStorage.getItem(key);
+    }
+    return data;
+  }
+}
 export const storyReducer = (state = initialStoryState, { type, payload }) => {
   switch (type) {
     case ActionTypes.ADD_STORY: {
       state.stories.unshift(payload); //append payload to start of stories array
-
+      store("stories", JSON.stringify(state));
       return { ...state }; //copy updated stories to the state
     }
 
@@ -69,6 +97,7 @@ export const postReducer = (state = initialPostState, { type, payload }) => {
   switch (type) {
     case ActionTypes.ADD_POST: {
       state.unshift(payload);
+      store("posts", JSON.stringify([...state]));
       return [...state];
     }
     case ActionTypes.ADD_COMMENT: {
@@ -80,6 +109,7 @@ export const postReducer = (state = initialPostState, { type, payload }) => {
         }
         return list;
       });
+      store("posts", JSON.stringify(temp));
       return temp;
     }
     case ActionTypes.ADD_LIKE: {
@@ -91,6 +121,7 @@ export const postReducer = (state = initialPostState, { type, payload }) => {
         }
         return list;
       });
+      store("posts", JSON.stringify(temp));
       return temp;
     }
     default:
